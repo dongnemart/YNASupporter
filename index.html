@@ -225,6 +225,9 @@
             color: white;
             margin-bottom: 1rem;
             text-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .hero .subtitle {
@@ -578,6 +581,9 @@
 
             .hero h1 {
                 font-size: 2.5rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
             
             .hero .subtitle {
@@ -611,6 +617,16 @@
             
             .manual-item {
                 padding: 1rem;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
         }
     </style>
