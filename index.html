@@ -418,6 +418,134 @@
             font-size: 1.2rem;
         }
 
+        /* Manual Section */
+        .manual {
+            padding: 5rem 2rem;
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+        }
+
+        .manual-section {
+            background: white;
+            margin-bottom: 2.5rem;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .manual-subtitle {
+            font-size: 1.6rem;
+            color: #1e3c72;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .manual-content {
+            color: #4a5568;
+            line-height: 1.7;
+        }
+
+        .manual-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8fafc;
+            border-radius: 15px;
+            border-left: 4px solid #1e3c72;
+        }
+
+        .manual-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .manual-item h4 {
+            color: #1a202c;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .manual-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .manual-item li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .manual-item li:last-child {
+            border-bottom: none;
+        }
+
+        .manual-item li::before {
+            content: "•";
+            color: #1e3c72;
+            font-weight: bold;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .llm-provider {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #4a90e2;
+        }
+
+        .llm-provider:last-child {
+            margin-bottom: 0;
+        }
+
+        .llm-provider h4 {
+            color: #1a202c;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .llm-provider ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .llm-provider li {
+            padding: 0.3rem 0;
+            color: #4a5568;
+            font-weight: 500;
+        }
+
+        .warning-item {
+            background: #fef5e7;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .warning-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .warning-item h4 {
+            color: #92400e;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+
+        .warning-item p {
+            color: #92400e;
+            margin: 0;
+        }
+
         /* Footer */
         .footer {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
@@ -471,6 +599,18 @@
 
             .video-tutorial {
                 padding: 3rem 1rem;
+            }
+            
+            .manual {
+                padding: 3rem 1rem;
+            }
+            
+            .manual-section {
+                padding: 2rem 1.5rem;
+            }
+            
+            .manual-item {
+                padding: 1rem;
             }
         }
     </style>
@@ -558,6 +698,132 @@
                     <div class="feature-icon">⚡</div>
                     <h3>업데이트</h3>
                     <p>온라인으로 새 버전이 있는지 확인하고 안내합니다</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Manual Section -->
+    <section class="manual">
+        <div class="container">
+            <h2 class="section-title">상세 사용법</h2>
+            
+            <!-- 기능 섹션 -->
+            <div class="manual-section">
+                <h3 class="manual-subtitle">📋 주요 기능</h3>
+                <div class="manual-content">
+                    <div class="manual-item">
+                        <h4>기본 기능</h4>
+                        <ul>
+                            <li><strong>송고 버튼 클릭:</strong> Ctrl+Alt+P</li>
+                            <li><strong>제목 길이 변경 활성화:</strong> Ctrl+Alt+T</li>
+                            <li><strong>통합검색 열기:</strong> Ctrl+Alt+F</li>
+                            <li><strong>입력창 순차 선택:</strong> Ctrl+Alt+E (내용→속성→키워드)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="manual-item">
+                        <h4>검색 및 입력 도우미</h4>
+                        <ul>
+                            <li><strong>국어 사전 검색:</strong> Ctrl+Alt+D (블록 설정한 단어)</li>
+                            <li><strong>추천분류/키워드 자동 입력:</strong> Ctrl+Shift+K</li>
+                            <li><strong>제목 글자 수 셈하기:</strong> Ctrl+Alt+C</li>
+                            <li><strong>제목 글자 수 줄이기:</strong> Ctrl+Alt+S (LLM API Key 필요)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="manual-item">
+                        <h4>AI 및 번역</h4>
+                        <ul>
+                            <li><strong>키워드 추출:</strong> Ctrl+Alt+K (LLM API Key 필요)</li>
+                            <li><strong>바이라인 자동 입력:</strong> Ctrl+Alt+V</li>
+                            <li><strong>DeepL 번역:</strong> Ctrl+Alt+H (DeepL API Key 필요)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="manual-item">
+                        <h4>숫자 및 텍스트 처리</h4>
+                        <ul>
+                            <li><strong>연합뉴스 숫자 표기:</strong> Shift+Alt+R</li>
+                            <li><strong>외화 원화 표기 추가:</strong> Ctrl+Alt+R</li>
+                            <li><strong>텍스트 대치:</strong> km→㎞, ~→∼ 등</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="manual-item">
+                        <h4>작성기 내 검색</h4>
+                        <ul>
+                            <li><strong>연합뉴스 검색:</strong> == 입력</li>
+                            <li><strong>구글 검색:</strong> // 입력</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 지원 LLM 섹션 -->
+            <div class="manual-section">
+                <h3 class="manual-subtitle">🤖 지원 LLM 제공사와 모델</h3>
+                <div class="manual-content">
+                    <div class="llm-provider">
+                        <h4>Google</h4>
+                        <ul>
+                            <li>gemini-2.5-flash-lite</li>
+                            <li>gemini-2.5-flash</li>
+                            <li>gemini-2.5-pro</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="llm-provider">
+                        <h4>OpenAI</h4>
+                        <ul>
+                            <li>gpt-5-nano</li>
+                            <li>gpt-5-mini</li>
+                            <li>gpt-5</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="llm-provider">
+                        <h4>OpenRouter</h4>
+                        <ul>
+                            <li>openai/gpt-oss-20b:free</li>
+                            <li>google/gemma-3-12b-it:free</li>
+                            <li>기타 무료 모델들</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 설정 섹션 -->
+            <div class="manual-section">
+                <h3 class="manual-subtitle">⚙️ 설정</h3>
+                <div class="manual-content">
+                    <p>트레이 아이콘(화면 오른쪽 하단 시계 옆 ^ 표시를 클릭하면 나옵니다. 푸른색 배경에 흰색 Y)을 마우스 오른쪽으로 클릭하면 설정 메뉴가 나타납니다.</p>
+                </div>
+            </div>
+
+            <!-- 주의사항 섹션 -->
+            <div class="manual-section">
+                <h3 class="manual-subtitle">⚠️ 확인한 문제점</h3>
+                <div class="manual-content">
+                    <div class="warning-item">
+                        <h4>텍스트 대치 기능</h4>
+                        <p>원문이 한글이면 작동하지 않습니다. '연합'을 'dusgkq'으로 입력해 사용하는 우회적인 방법이 있으나, 제대로 작동하지 않으니 지양하시길 바랍니다.</p>
+                    </div>
+                    
+                    <div class="warning-item">
+                        <h4>프로그램 호환성</h4>
+                        <p>기본적으로 YnaClinetEx에 한정해 작동되도록 짜여져 있으나, 이외 프로그램에서도 작동되기도 합니다. 향후 수정 예정입니다.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 업데이트 계획 섹션 -->
+            <div class="manual-section">
+                <h3 class="manual-subtitle">🚀 업데이트 계획</h3>
+                <div class="manual-content">
+                    <ul>
+                        <li>한글 텍스트 대치 기능 개선</li>
+                    </ul>
                 </div>
             </div>
         </div>
