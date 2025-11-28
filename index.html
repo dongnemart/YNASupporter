@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -89,7 +90,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         }
 
         .nav-container {
@@ -114,7 +115,7 @@
         }
 
         .nav-links a {
-            color: rgba(255,255,255,0.9);
+            color: rgba(255, 255, 255, 0.9);
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
@@ -124,13 +125,13 @@
 
         .nav-links a:hover {
             color: white;
-            background: rgba(255,255,255,0.15);
+            background: rgba(255, 255, 255, 0.15);
             transform: translateY(-1px);
         }
 
         .nav-links a.active {
             color: white;
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
         }
 
         /* Mobile Navigation */
@@ -163,11 +164,11 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.08) 0%, transparent 40%),
-                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 40%),
-                radial-gradient(circle at 40% 80%, rgba(255,255,255,0.05) 0%, transparent 40%),
-                radial-gradient(circle at 70% 70%, rgba(255,255,255,0.07) 0%, transparent 40%);
+            background:
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.06) 0%, transparent 40%),
+                radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.07) 0%, transparent 40%);
             animation: gentleFloat 15s ease-in-out infinite;
         }
 
@@ -178,37 +179,44 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(45deg, 
-                rgba(30, 60, 114, 0.2) 0%, 
-                rgba(42, 82, 152, 0.2) 25%, 
-                rgba(74, 144, 226, 0.2) 50%, 
-                rgba(123, 104, 238, 0.2) 75%, 
-                rgba(147, 112, 219, 0.2) 100%);
+            background: linear-gradient(45deg,
+                    rgba(30, 60, 114, 0.2) 0%,
+                    rgba(42, 82, 152, 0.2) 25%,
+                    rgba(74, 144, 226, 0.2) 50%,
+                    rgba(123, 104, 238, 0.2) 75%,
+                    rgba(147, 112, 219, 0.2) 100%);
             animation: gentleShimmer 12s ease-in-out infinite;
         }
 
         @keyframes gentleFloat {
-            0%, 100% { 
-                transform: translateY(0px) scale(1); 
+
+            0%,
+            100% {
+                transform: translateY(0px) scale(1);
                 opacity: 0.6;
             }
-            33% { 
-                transform: translateY(-20px) scale(1.01); 
+
+            33% {
+                transform: translateY(-20px) scale(1.01);
                 opacity: 0.8;
             }
-            66% { 
-                transform: translateY(-10px) scale(0.99); 
+
+            66% {
+                transform: translateY(-10px) scale(0.99);
                 opacity: 0.7;
             }
         }
 
         @keyframes gentleShimmer {
-            0%, 100% { 
-                opacity: 0.15; 
+
+            0%,
+            100% {
+                opacity: 0.15;
                 transform: translateX(0px);
             }
-            50% { 
-                opacity: 0.25; 
+
+            50% {
+                opacity: 0.25;
                 transform: translateX(15px);
             }
         }
@@ -224,7 +232,7 @@
             font-weight: 800;
             color: white;
             margin-bottom: 1rem;
-            text-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -232,14 +240,14 @@
 
         .hero .subtitle {
             font-size: 1.3rem;
-            color: rgba(255,255,255,0.95);
+            color: rgba(255, 255, 255, 0.95);
             margin-bottom: 2rem;
             font-weight: 400;
         }
 
         .hero .description {
             font-size: 1.1rem;
-            color: rgba(255,255,255,0.9);
+            color: rgba(255, 255, 255, 0.9);
             margin-bottom: 3rem;
             max-width: 600px;
             margin-left: auto;
@@ -255,7 +263,7 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: rgba(255,255,255,0.95);
+            background: rgba(255, 255, 255, 0.95);
             color: #1e3c72;
             padding: 1.2rem 2.5rem;
             border-radius: 50px;
@@ -263,14 +271,14 @@
             font-weight: 700;
             font-size: 1.1rem;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             backdrop-filter: blur(15px);
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .download-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
             background: white;
             color: #1e3c72;
         }
@@ -282,7 +290,7 @@
 
         .version-info {
             margin-top: 1rem;
-            color: rgba(255,255,255,0.8);
+            color: rgba(255, 255, 255, 0.8);
             font-size: 0.9rem;
             font-weight: 500;
         }
@@ -311,7 +319,7 @@
             margin: 0 auto;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
         }
 
         .video-container iframe {
@@ -353,7 +361,7 @@
             background: white;
             padding: 2.5rem;
             border-radius: 20px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
             text-align: center;
             transition: all 0.3s ease;
             border: 1px solid rgba(226, 232, 240, 0.8);
@@ -361,7 +369,7 @@
 
         .feature-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
         }
 
         .feature-icon {
@@ -432,7 +440,7 @@
             margin-bottom: 2.5rem;
             padding: 2.5rem;
             border-radius: 20px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
             border: 1px solid rgba(226, 232, 240, 0.8);
         }
 
@@ -585,15 +593,15 @@
                 overflow: hidden;
                 text-overflow: ellipsis;
             }
-            
+
             .hero .subtitle {
                 font-size: 1.1rem;
             }
-            
+
             .features-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .download-btn {
                 padding: 1rem 2rem;
                 font-size: 1rem;
@@ -606,15 +614,15 @@
             .video-tutorial {
                 padding: 3rem 1rem;
             }
-            
+
             .manual {
                 padding: 3rem 1rem;
             }
-            
+
             .manual-section {
                 padding: 2rem 1.5rem;
             }
-            
+
             .manual-item {
                 padding: 1rem;
             }
@@ -631,6 +639,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar">
@@ -638,8 +647,10 @@
             <a href="#" class="nav-brand">연합뉴스 지원 도구</a>
             <button class="nav-toggle" onclick="toggleNav()">☰</button>
             <ul class="nav-links">
-                <li><a href="https://chromewebstore.google.com/detail/yonhapcms-enhancement-plu/lafhcninhgpmpdckfkfmgobdmcgfohoh?authuser=0&hl=ko" target="_blank">통합검색 플러그인</a></li>
-                <li><a href="https://chromewebstore.google.com/detail/assembly-webcast-subtitle/iiadnfahoocbannfpgfgbommblpagacl?authuser=0&hl=ko" target="_blank">국회의사중계시스템 자막 저장기</a></li>
+                <li><a href="https://chromewebstore.google.com/detail/yonhapcms-enhancement-plu/lafhcninhgpmpdckfkfmgobdmcgfohoh?authuser=0&hl=ko"
+                        target="_blank">통합검색 플러그인</a></li>
+                <li><a href="https://chromewebstore.google.com/detail/assembly-webcast-subtitle/iiadnfahoocbannfpgfgbommblpagacl?authuser=0&hl=ko"
+                        target="_blank">국회의사중계시스템 자막 저장기</a></li>
             </ul>
         </div>
     </nav>
@@ -653,16 +664,18 @@
                 YNA 클라이언트 보조 도구입니다. AI와 질의응답, AI를 통한 키워드 추천,<br>
                 작성기 내에서 연합·구글 검색 등 기사 작성 시 필요한 기능을 제공합니다.
             </p>
-            
+
             <div class="download-section">
                 <a href="YNASupport_Setup.exe" class="download-btn" download>
                     <svg class="download-icon" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        <path fill-rule="evenodd"
+                            d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+                            clip-rule="evenodd"></path>
                     </svg>
                     다운로드
                 </a>
                 <div class="version-info">
-                    버전 3.1.0.3
+                    버전 3.2.0.0
                 </div>
             </div>
         </div>
@@ -674,11 +687,8 @@
             <h2 class="section-title">활용법</h2>
             <p class="video-description">연합뉴스 작성기 도우미 사용 모습입니다</p>
             <div class="video-container">
-                <iframe 
-                    src="https://www.youtube.com/embed/WvNmpc5Hzu8" 
-                    title="연합뉴스 작성기 도우미 사용 예시" 
-                    frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                <iframe src="https://www.youtube.com/embed/WvNmpc5Hzu8" title="연합뉴스 작성기 도우미 사용 예시" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowfullscreen>
                 </iframe>
             </div>
@@ -698,7 +708,8 @@
                 <div class="feature-card">
                     <div class="feature-icon">🤖</div>
                     <h3>AI 통합</h3>
-                    <p>단축키(Ctrl+Alt+Q)로 AI에게 질문해 답변을 받거나 키워드를 추천(Ctrl+Alt+K)받을 수 있습니다. DeepL을 이용한 번역 기능(Ctrl+Alt+H)도 있습니다</p>
+                    <p>단축키(Ctrl+Alt+Q)로 AI에게 질문해 답변을 받거나 키워드를 추천(Ctrl+Alt+K)받을 수 있습니다. DeepL을 이용한 번역 기능(Ctrl+Alt+H)도
+                        있습니다</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🔢</div>
@@ -709,6 +720,11 @@
                     <div class="feature-icon">✍️</div>
                     <h3>바이라인 자동 입력 등</h3>
                     <p>바이라인을 자동으로 입력(Ctrl+Alt+V)하거나 국어사전 검색(Ctrl+Alt+D) 등도 가능합니다</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>주가 검색</h3>
+                    <p>트레이 메뉴나 단축키(Ctrl+Alt+M)로 작은 창을 띄워 실시간 주가를 조회하고 복사할 수 있습니다</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">⚡</div>
@@ -723,7 +739,7 @@
     <section class="manual">
         <div class="container">
             <h2 class="section-title">상세 사용법</h2>
-            
+
             <!-- 기능 섹션 -->
             <div class="manual-section">
                 <h3 class="manual-subtitle">📋 주요 기능</h3>
@@ -737,7 +753,7 @@
                             <li><strong>입력창 순차 선택:</strong> Ctrl+Alt+E (내용→속성→키워드)</li>
                         </ul>
                     </div>
-                    
+
                     <div class="manual-item">
                         <h4>검색 및 입력 도우미</h4>
                         <ul>
@@ -747,7 +763,7 @@
                             <li><strong>제목 글자 수 줄이기:</strong> Ctrl+Alt+S (LLM API Key 필요)</li>
                         </ul>
                     </div>
-                    
+
                     <div class="manual-item">
                         <h4>AI 및 번역</h4>
                         <ul>
@@ -756,7 +772,7 @@
                             <li><strong>DeepL 번역:</strong> Ctrl+Alt+H (DeepL API Key 필요)</li>
                         </ul>
                     </div>
-                    
+
                     <div class="manual-item">
                         <h4>숫자 및 텍스트 처리</h4>
                         <ul>
@@ -765,12 +781,13 @@
                             <li><strong>텍스트 대치:</strong> km→㎞, ~→∼ 등</li>
                         </ul>
                     </div>
-                    
+
                     <div class="manual-item">
                         <h4>작성기 내 검색</h4>
                         <ul>
                             <li><strong>연합뉴스 검색:</strong> == 입력</li>
                             <li><strong>구글 검색:</strong> // 입력</li>
+                            <li><strong>주가 검색:</strong> Ctrl+Alt+M</li>
                         </ul>
                     </div>
                 </div>
@@ -788,7 +805,7 @@
                             <li>gemini-2.5-pro</li>
                         </ul>
                     </div>
-                    
+
                     <div class="llm-provider">
                         <h4>OpenAI</h4>
                         <ul>
@@ -797,7 +814,7 @@
                             <li>gpt-5</li>
                         </ul>
                     </div>
-                    
+
                     <div class="llm-provider">
                         <h4>OpenRouter</h4>
                         <ul>
@@ -825,10 +842,10 @@
                         <h4>텍스트 대치 기능</h4>
                         <p>원문이 한글이면 작동하지 않습니다. '연합'을 'dusgkq'으로 입력해 사용하는 우회적인 방법이 있으나, 제대로 작동하지 않으니 지양하시길 바랍니다.</p>
                     </div>
-                    
+
                     <div class="warning-item">
                         <h4>프로그램 호환성</h4>
-                        <p>기본적으로 YnaClientEx에 한정해 작동되도록 짜여져 있으나, 이외 프로그램에서도 작동되기도 합니다. 향후 수정 예정입니다.</p>
+                        <p>기본적으로 YnaClinetEx에 한정해 작동되도록 짜여져 있으나, 이외 프로그램에서도 작동되기도 합니다. 향후 수정 예정입니다.</p>
                     </div>
                 </div>
             </div>
@@ -859,8 +876,5 @@
         }
     </script>
 </body>
+
 </html>
-
-
-
-
