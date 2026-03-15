@@ -81,6 +81,7 @@
             line-height: 1.6;
             color: #333;
             overflow-x: hidden;
+            word-break: keep-all;
         }
 
         /* Navigation Bar */
@@ -362,7 +363,7 @@
             padding: 2.5rem;
             border-radius: 20px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-            text-align: center;
+            text-align: left;
             transition: all 0.3s ease;
             border: 1px solid rgba(226, 232, 240, 0.8);
         }
@@ -397,6 +398,7 @@
             color: #4a5568;
             line-height: 1.7;
             font-weight: 500;
+            word-break: keep-all;
         }
 
         /* System Requirements */
@@ -662,8 +664,8 @@
             <h1>연합뉴스 작성기 도우미</h1>
             <p class="subtitle">기사 쓸 때 귀찮은 부분을 해소합니다</p>
             <p class="description">
-                YNA 클라이언트 보조 도구입니다. AI와 질의응답, AI를 통한 키워드 추천,<br>
-                작성기 내에서 연합·구글 검색 등 기사 작성 시 필요한 기능을 제공합니다.
+                YNA 클라이언트 보조 도구입니다. <br> AI와 질의응답, AI를 통한 키워드 추천과 제목 요약, 작성기 내에서 연합·구글 검색, 수치 증감률 계산 등 <br> 기사 작성 시 필요한
+                기능을 제공합니다.
             </p>
 
             <div class="download-section">
@@ -676,7 +678,7 @@
                     다운로드
                 </a>
                 <div class="version-info">
-                    버전 3.3.0.0
+                    버전 3.4.0.0
                 </div>
             </div>
         </div>
@@ -718,9 +720,9 @@
                     <p>아라비아 숫자를 연합뉴스 표기에 맞게 변환(Ctrl+Shift+R)합니다. 실시간 환율을 적용해 외화에 원화 표기를 추가(Ctrl+Alt+R)할 수도 있습니다</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">✍️</div>
-                    <h3>바이라인 자동 입력 등</h3>
-                    <p>바이라인을 자동으로 입력(Ctrl+Alt+V)하거나 국어사전 검색(Ctrl+Alt+D) 등도 가능합니다</p>
+                    <div class="feature-icon">🧮</div>
+                    <h3>AI 퍼센트 계산기</h3>
+                    <p>비율값·비율·증감률·증감값 등 4가지 퍼센트 계산을 지원합니다. 텍스트를 선택하면 AI가 기준값과 비교값을 자동으로 추출해 즉시 계산합니다</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📈</div>
@@ -769,7 +771,8 @@
                         <h4>AI 및 번역</h4>
                         <ul>
                             <li><strong>키워드 추출:</strong> Ctrl+Alt+K (LLM API Key 필요)</li>
-                            <li><strong>바이라인 자동 입력:</strong> Ctrl+Alt+V</li>
+                            <li><strong>퍼센트 계산기:</strong> Ctrl+Alt+N — 텍스트 선택 시 AI가 기준값·비교값을 자동 추출하여 계산 (LLM API Key 필요)
+                            </li>
                             <li><strong>DeepL 번역:</strong> Ctrl+Alt+H (DeepL API Key 필요)</li>
                         </ul>
                     </div>
@@ -794,38 +797,6 @@
                 </div>
             </div>
 
-            <!-- 지원 LLM 섹션 -->
-            <div class="manual-section">
-                <h3 class="manual-subtitle">🤖 지원 LLM 제공사와 모델</h3>
-                <div class="manual-content">
-                    <div class="llm-provider">
-                        <h4>Google</h4>
-                        <ul>
-                            <li>gemini-2.5-flash-lite</li>
-                            <li>gemini-2.5-flash</li>
-                            <li>gemini-2.5-pro</li>
-                        </ul>
-                    </div>
-
-                    <div class="llm-provider">
-                        <h4>OpenAI</h4>
-                        <ul>
-                            <li>gpt-5-nano</li>
-                            <li>gpt-5-mini</li>
-                            <li>gpt-5</li>
-                        </ul>
-                    </div>
-
-                    <div class="llm-provider">
-                        <h4>OpenRouter</h4>
-                        <ul>
-                            <li>openai/gpt-oss-20b:free</li>
-                            <li>google/gemma-3-12b-it:free</li>
-                            <li>기타 무료 모델들</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
 
             <!-- 설정 섹션 -->
             <div class="manual-section">
@@ -846,7 +817,7 @@
 
                     <div class="warning-item">
                         <h4>프로그램 호환성</h4>
-                        <p>기본적으로 YnaClinetEx에 한정해 작동되도록 짜여져 있으나, 이외 프로그램에서도 작동되기도 합니다. 향후 수정 예정입니다.</p>
+                        <p>기본적으로 YnaClinetEx에 한정해 작동되도록 짜였으나, 이외 프로그램에서도 작동되기도 합니다. 향후 수정 예정입니다.</p>
                     </div>
                 </div>
             </div>
@@ -866,7 +837,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 DN. 모든 권리 보유.</p>
+            <p>&copy; 2026 DN. 모든 권리 보유.</p>
         </div>
     </footer>
 
