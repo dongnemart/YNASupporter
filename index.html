@@ -678,7 +678,7 @@
                     다운로드
                 </a>
                 <div class="version-info">
-                    버전 3.5.1.1
+                    버전 3.6.0.0
                 </div>
             </div>
         </div>
@@ -704,25 +704,20 @@
             <h2 class="section-title">주요 기능</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🔍</div>
-                    <h3>빠른 검색</h3>
-                    <p>단축키로 작성기를 떠나지 않고 연합뉴스(==)·구글(//) 검색이 가능합니다</p>
-                </div>
-                <div class="feature-card">
                     <div class="feature-icon">🤖</div>
                     <h3>AI 통합</h3>
                     <p>단축키(Ctrl+Alt+Q)로 AI에게 질문해 답변을 받거나 키워드를 추천(Ctrl+Alt+K)받을 수 있습니다. DeepL을 이용한 번역 기능(Ctrl+Alt+H)도
                         있습니다</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🔢</div>
-                    <h3>연합뉴스 숫자 표기 적용</h3>
-                    <p>아라비아 숫자를 연합뉴스 표기에 맞게 변환(Ctrl+Shift+R)합니다. 실시간 환율을 적용해 외화에 원화 표기를 추가(Ctrl+Alt+R)할 수도 있습니다</p>
-                </div>
-                <div class="feature-card">
                     <div class="feature-icon">🧮</div>
                     <h3>AI 퍼센트 계산기</h3>
                     <p>비율값·비율·증감률·증감값 등 4가지 퍼센트 계산을 지원합니다. 텍스트를 선택하면 AI가 기준값과 비교값을 자동으로 추출해 즉시 계산합니다</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⌨️</div>
+                    <h3>텍스트 자동 대치</h3>
+                    <p>자주 쓰는 단어를 여러번 입력하지 않도록 입력어를 타이핑하는 즉시 정해진 단어로 변환합니다. 대치어 설정 창에서 대상 단어를 추가·수정할 수 있습니다.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📈</div>
@@ -733,6 +728,21 @@
                     <div class="feature-icon">⚡</div>
                     <h3>이미지 리사이즈</h3>
                     <p>사용자가 정한 용량에 맞춰 이미지 크기를 조정합니다</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🖼️</div>
+                    <h3>사진 콜라주 제작</h3>
+                    <p>여러 장의 사진을 하나로 합쳐줍니다. 다양한 레이아웃에 맞춰 2~6장의 이미지를 합칠 수 있습니다.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔢</div>
+                    <h3>연합뉴스 숫자 표기 적용</h3>
+                    <p>아라비아 숫자를 연합뉴스 표기에 맞게 변환(Ctrl+Shift+R)합니다. 실시간 환율을 적용해 외화에 원화 표기를 추가(Ctrl+Alt+R)할 수도 있습니다</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>빠른 검색</h3>
+                    <p>단축키로 작성기를 떠나지 않고 연합뉴스(==)·구글(//) 검색이 가능합니다</p>
                 </div>
             </div>
         </div>
@@ -745,7 +755,6 @@
 
             <!-- 기능 섹션 -->
             <div class="manual-section">
-                <h3 class="manual-subtitle">📋 주요 기능</h3>
                 <div class="manual-content">
                     <div class="manual-item">
                         <h4>기본 기능</h4>
@@ -762,6 +771,7 @@
                         <ul>
                             <li><strong>국어 사전 검색:</strong> Ctrl+Alt+D (블록 설정한 단어)</li>
                             <li><strong>추천분류/키워드 자동 입력:</strong> Ctrl+Shift+K</li>
+                            <li><strong>바이라인 자동 입력:</strong> Ctrl+Alt+V</li>
                             <li><strong>제목 글자 수 셈하기:</strong> Ctrl+Alt+C</li>
                             <li><strong>제목 글자 수 줄이기:</strong> Ctrl+Alt+S (LLM API Key 필요)</li>
                         </ul>
@@ -780,9 +790,10 @@
                     <div class="manual-item">
                         <h4>숫자 및 텍스트 처리</h4>
                         <ul>
-                            <li><strong>연합뉴스 숫자 표기:</strong> Shift+Alt+R</li>
+                            <li><strong>연합뉴스 숫자 표기:</strong> Ctrl+Shift+R</li>
                             <li><strong>외화 원화 표기 추가:</strong> Ctrl+Alt+R</li>
-                            <li><strong>텍스트 대치:</strong> km→㎞, ~→∼ 등</li>
+                            <li><strong>텍스트 대치:</strong> km→㎞, ~→∼ 등 즉시 반환. 트레이 메뉴에서 '대치어 설정'에서 단어 관리</li>
+                            <li><strong>괄호/따옴표 자동 닫기:</strong> (, [, {, <, ", ' 입력 시 해당 기호 자동 닫힘</li>
                         </ul>
                     </div>
 
@@ -808,30 +819,13 @@
 
             <!-- 주의사항 섹션 -->
             <div class="manual-section">
-                <h3 class="manual-subtitle">⚠️ 확인한 문제점</h3>
+                <h3 class="manual-subtitle">⚠️ 프로그램 호환성</h3>
                 <div class="manual-content">
                     <div class="warning-item">
-                        <h4>텍스트 대치 기능</h4>
-                        <p>원문이 한글이면 작동하지 않습니다. '연합'을 'dusgkq'으로 입력해 사용하는 우회적인 방법이 있으나, 제대로 작동하지 않으니 지양하시길 바랍니다.</p>
-                    </div>
-
-                    <div class="warning-item">
-                        <h4>프로그램 호환성</h4>
-                        <p>기본적으로 YnaClinetEx에 한정해 작동되도록 짜였으나, 이외 프로그램에서도 작동되기도 합니다. 향후 수정 예정입니다.</p>
+                        <p>기본적으로 YnaClinetEx에 한정해 작동되도록 짜였으나, 이외 프로그램에서도 작동되기도 합니다. </p>
                     </div>
                 </div>
             </div>
-
-            <!-- 업데이트 계획 섹션 -->
-            <div class="manual-section">
-                <h3 class="manual-subtitle">🚀 업데이트 계획</h3>
-                <div class="manual-content">
-                    <ul>
-                        <li>한글 텍스트 대치 기능 개선</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
     </section>
 
     <!-- Footer -->
