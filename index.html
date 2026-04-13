@@ -559,6 +559,126 @@
             margin: 0;
         }
 
+        /* New Feature Section */
+        .new-feature {
+            padding: 4rem 2rem;
+            background: linear-gradient(180deg, #f8fafc 0%, #f0ebff 50%, #e8e0ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .new-feature::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(123, 104, 238, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .new-feature-header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .new-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #7b68ee, #9370db);
+            color: white;
+            padding: 0.35rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+            box-shadow: 0 4px 14px rgba(123, 104, 238, 0.35);
+            animation: badgePulse 3s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+
+            0%,
+            100% {
+                box-shadow: 0 4px 14px rgba(123, 104, 238, 0.35);
+            }
+
+            50% {
+                box-shadow: 0 4px 22px rgba(123, 104, 238, 0.55);
+            }
+        }
+
+        .new-feature .section-title {
+            margin-bottom: 0.5rem;
+        }
+
+        .new-feature-subtitle {
+            text-align: center;
+            color: #6b7280;
+            font-size: 1.05rem;
+            font-weight: 500;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .new-feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nf-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            padding: 1.8rem;
+            border-radius: 16px;
+            border: 1px solid rgba(123, 104, 238, 0.15);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .nf-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 32px rgba(123, 104, 238, 0.15);
+            border-color: rgba(123, 104, 238, 0.3);
+        }
+
+        .nf-card-icon {
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .nf-card h3 {
+            font-size: 1.15rem;
+            color: #1a202c;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+        }
+
+        .nf-card p {
+            color: #4a5568;
+            font-size: 0.95rem;
+            line-height: 1.65;
+            font-weight: 500;
+        }
+
+        .nf-card .nf-shortcut {
+            display: inline-block;
+            margin-top: 0.6rem;
+            background: rgba(123, 104, 238, 0.1);
+            color: #5b4dc7;
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+
         /* Footer */
         .footer {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
@@ -678,7 +798,7 @@
                     다운로드
                 </a>
                 <div class="version-info">
-                    버전 3.6.0.1
+                    버전 4.0.0.0
                 </div>
             </div>
         </div>
@@ -690,10 +810,67 @@
             <h2 class="section-title">활용법</h2>
             <p class="video-description">연합뉴스 작성기 도우미 사용 모습입니다</p>
             <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/8H-KSJ1dORM?si=aMJmljmp5Mu2_dW1" title="연합뉴스 작성기 도우미 사용법" frameborder="0"
+                <iframe src="https://www.youtube.com/embed/8H-KSJ1dORM?si=aMJmljmp5Mu2_dW1" title="연합뉴스 작성기 도우미 사용법"
+                    frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowfullscreen>
                 </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Feature: QuickBoard 메모보드 -->
+    <section class="new-feature" id="quickboard">
+        <div class="container">
+            <div class="new-feature-header">
+                <span class="new-badge">✨ New</span>
+                <h2 class="section-title">메모보드</h2>
+            </div>
+            <p class="new-feature-subtitle">
+                하나의 창에 텍스트와 이미지를 모아 두고, AI 분석까지 받을 수 있는 메모판입니다
+            </p>
+            <div class="new-feature-grid">
+                <div class="nf-card">
+                    <div class="nf-card-icon">📋</div>
+                    <h3>메모판 다중 실행</h3>
+                    <p>여러 메모판을 동시에 띄울 수 있으며, 트레이 메뉴에서 새 메모판을 추가로 열 수 있습니다</p>
+                    <span class="nf-shortcut">Ctrl+Alt+A</span>
+                </div>
+                <div class="nf-card">
+                    <div class="nf-card-icon">✏️</div>
+                    <h3>텍스트 메모 추가·수정</h3>
+                    <p>메모 추가 버튼으로 직접 입력하고, 더블클릭으로 수정할 수 있습니다. 복사·삭제도 가능합니다</p>
+                </div>
+                <div class="nf-card">
+                    <div class="nf-card-icon">📎</div>
+                    <h3>클립보드 메모 수집</h3>
+                    <p>텍스트 클립보드 감지를 켜면 복사한 텍스트가 자동으로 메모에 추가됩니다. Ctrl+V로 즉시 가져올 수도 있습니다</p>
+                </div>
+                <div class="nf-card">
+                    <div class="nf-card-icon">⏱️</div>
+                    <h3>시간에 따라 메모 자동 관리</h3>
+                    <p>기본 6시간 보존, 1~24시간 범위로 보존 시간 설정이 가능합니다. &lsquo;메모보드 유지&rsquo;를 켜면 만료 없이 계속 유지됩니다</p>
+                </div>
+                <div class="nf-card">
+                    <div class="nf-card-icon">💾</div>
+                    <h3>저장 &amp; 불러오기</h3>
+                    <p>메모판 상태를 JSON으로 저장하고 복원할 수 있습니다. 창 크기·위치·색상·AI 분석 결과까지 함께 저장됩니다</p>
+                </div>
+                <div class="nf-card">
+                    <div class="nf-card-icon">🎨</div>
+                    <h3>색상 &amp; 레이아웃</h3>
+                    <p>보드 전체·개별 메모 카드 색상을 바꿀 수 있습니다. 창 너비에 따라 메모 카드가 자동 재배치됩니다</p>
+                </div>
+                <div class="nf-card">
+                    <div class="nf-card-icon">🔔</div>
+                    <h3>트레이 연동</h3>
+                    <p>창을 닫으면 트레이로 숨기고, 복원 단축키(기본 Ctrl+Alt+1~5)로 빠르게 다시 불러올 수 있습니다</p>
+                </div>
+                <div class="nf-card">
+                    <div class="nf-card-icon">🤖</div>
+                    <h3>AI 분석</h3>
+                    <p>모인 메모 내용을 바탕으로 AI 분석을 요청하면, 결과가 보드 맨 위에 카드로 표시됩니다. 프롬프트도 수정 가능합니다</p>
+                </div>
             </div>
         </div>
     </section>
@@ -761,6 +938,7 @@
                         <ul>
                             <li><strong>송고 버튼 클릭:</strong> Ctrl+Alt+P</li>
                             <li><strong>제목 길이 변경 활성화:</strong> Ctrl+Alt+T</li>
+                            <li><strong>제목 길이 변경 항상 켜기:</strong> 설정에서 '제목 길이 변경 항상 켜기' 체크</li>
                             <li><strong>통합검색 열기:</strong> Ctrl+Alt+F</li>
                             <li><strong>입력창 순차 선택:</strong> Ctrl+Alt+E (내용→속성→키워드)</li>
                         </ul>
@@ -774,6 +952,7 @@
                             <li><strong>바이라인 자동 입력:</strong> Ctrl+Alt+V</li>
                             <li><strong>제목 글자 수 셈하기:</strong> Ctrl+Alt+C</li>
                             <li><strong>제목 글자 수 줄이기:</strong> Ctrl+Alt+S (LLM API Key 필요)</li>
+                            <li><strong>메모보드:</strong> Ctrl+Alt+A</li>
                         </ul>
                     </div>
 
@@ -793,17 +972,17 @@
                             <li><strong>연합뉴스 숫자 표기:</strong> Ctrl+Shift+R</li>
                             <li><strong>외화 원화 표기 추가:</strong> Ctrl+Alt+R</li>
                             <li><strong>텍스트 대치:</strong> km→㎞, ~→∼ 등 즉시 반환. 트레이 메뉴에서 '대치어 설정'에서 단어 관리</li>
-                            <li><strong>괄호/따옴표 자동 닫기:</strong> (, [, {, <, ", ' 입력 시 해당 기호 자동 닫힘</li>
+                            <li><strong>괄호/따옴표 자동 닫기:</strong> (, [, {, <, ", ' 입력 시 해당 기호 자동 닫힘. 설정에서 괄호/따옴표 자동 닫기 켜기</li>
                         </ul>
                     </div>
 
-                    <div class="manual-item">
-                        <h4>작성기 내 검색</h4>
-                        <ul>
-                            <li><strong>연합뉴스 검색:</strong> == 입력</li>
-                            <li><strong>구글 검색:</strong> // 입력</li>
-                            <li><strong>주가 검색:</strong> Ctrl+Alt+M</li>
-                        </ul>
+                    <div class=" manual-item">
+                                    <h4>작성기 내 검색</h4>
+                                    <ul>
+                                        <li><strong>연합뉴스 검색:</strong> == 입력</li>
+                                        <li><strong>구글 검색:</strong> // 입력</li>
+                                        <li><strong>주가 검색:</strong> Ctrl+Alt+M</li>
+                                    </ul>
                     </div>
                 </div>
             </div>
