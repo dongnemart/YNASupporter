@@ -143,12 +143,22 @@
             aspect-ratio: 16 / 9;
         }
 
-        .video-frame iframe {
+        .video-frame iframe,
+        .video-frame img {
             position: absolute;
             inset: 0;
             width: 100%;
             height: 100%;
             border: 0;
+        }
+
+        .video-frame img {
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .video-frame + .section-head {
+            margin-top: 4rem;
         }
 
         .manual-block {
@@ -276,6 +286,9 @@
 
             <section class="page-section" id="new-in-50" aria-labelledby="new-title">
                 <div class="inner">
+                    <div class="video-frame">
+                        <img src="ScreenShot.jpg" alt="연합뉴스 작성기 도우미 5.0 화면. 왼쪽 AI 웹 패널, 도구모음 엠바고 버튼, 본문 위 이미지 검색 창">
+                    </div>
                     <div class="section-head">
                         <span class="krds-badge bg-secondary">New in 5.0</span>
                         <h2 id="new-title">5.0 새 기능</h2>
