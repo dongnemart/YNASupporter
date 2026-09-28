@@ -5,1023 +5,578 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>연합뉴스 작성기 도우미 - 다운로드</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/packages/pretendard-gov/dist/web/static/pretendard-gov.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/krds-uiux@1.1.0/resources/cdn/krds.min.css">
     <style>
-        /* Presentation 폰트 정의 */
-        @font-face {
-            font-family: 'Presentation';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-1Thin.woff2') format('woff2');
-            font-weight: 100;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: 'Presentation';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-2ExtraLight.woff2') format('woff2');
-            font-weight: 200;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: 'Presentation';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-3Light.woff2') format('woff2');
-            font-weight: 300;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: 'Presentation';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-4Regular.woff2') format('woff2');
-            font-weight: 400;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: 'Presentation';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-5Medium.woff2') format('woff2');
-            font-weight: 500;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: 'Presentation';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-6SemiBold.woff2') format('woff2');
-            font-weight: 600;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: 'Presentation';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-7Bold.woff2') format('woff2');
-            font-weight: 700;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: 'Presentation';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-8ExtraBold.woff2') format('woff2');
-            font-weight: 800;
-            font-display: swap;
-        }
-
-        @font-face {
-            font-family: 'Presentation';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff2') format('woff2');
-            font-weight: 900;
-            font-display: swap;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Presentation', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
+            font-family: var(--krds-font-family-base, "Pretendard GOV", sans-serif);
+            color: var(--krds-color-light-gray-90);
             word-break: keep-all;
         }
 
-        /* Navigation Bar */
-        .navbar {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            padding: 1rem 2rem;
+        .site-header {
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            background: var(--krds-color-light-gray-0);
+            border-bottom: 1px solid var(--krds-color-light-gray-10);
         }
 
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
+        .site-header .inner {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            min-height: 7.2rem;
+            gap: var(--krds-gap-5);
         }
 
-        .nav-brand {
-            font-size: 1.2rem;
+        .site-brand {
+            font-size: 2rem;
             font-weight: 700;
-            color: white;
+            color: var(--krds-color-light-primary-70);
             text-decoration: none;
+            white-space: nowrap;
         }
 
-        .nav-links {
+        .site-nav {
             display: flex;
-            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: var(--krds-gap-2);
             list-style: none;
+            margin: 0;
+            padding: 0;
         }
 
-        .nav-links a {
-            color: rgba(255, 255, 255, 0.9);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
+        .site-nav .krds-btn {
+            white-space: nowrap;
         }
 
-        .nav-links a:hover {
-            color: white;
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-1px);
-        }
-
-        .nav-links a.active {
-            color: white;
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Mobile Navigation */
         .nav-toggle {
             display: none;
             background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
+            border: 0;
             cursor: pointer;
+            font-size: 1.4rem;
+            color: var(--krds-color-light-primary-70);
         }
 
-        /* Hero Section */
         .hero {
-            min-height: 60vh;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 25%, #4a90e2 50%, #7b68ee 75%, #9370db 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: var(--krds-color-light-primary-70);
+            color: var(--krds-color-light-gray-0);
             text-align: center;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background:
-                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.06) 0%, transparent 40%),
-                radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.07) 0%, transparent 40%);
-            animation: gentleFloat 15s ease-in-out infinite;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg,
-                    rgba(30, 60, 114, 0.2) 0%,
-                    rgba(42, 82, 152, 0.2) 25%,
-                    rgba(74, 144, 226, 0.2) 50%,
-                    rgba(123, 104, 238, 0.2) 75%,
-                    rgba(147, 112, 219, 0.2) 100%);
-            animation: gentleShimmer 12s ease-in-out infinite;
-        }
-
-        @keyframes gentleFloat {
-
-            0%,
-            100% {
-                transform: translateY(0px) scale(1);
-                opacity: 0.6;
-            }
-
-            33% {
-                transform: translateY(-20px) scale(1.01);
-                opacity: 0.8;
-            }
-
-            66% {
-                transform: translateY(-10px) scale(0.99);
-                opacity: 0.7;
-            }
-        }
-
-        @keyframes gentleShimmer {
-
-            0%,
-            100% {
-                opacity: 0.15;
-                transform: translateX(0px);
-            }
-
-            50% {
-                opacity: 0.25;
-                transform: translateX(15px);
-            }
-        }
-
-        .hero-content {
-            max-width: 800px;
-            position: relative;
-            z-index: 1;
+            padding: 10rem 2rem;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: white;
-            margin-bottom: 1rem;
-            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            font-size: 4.8rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.3;
         }
 
         .hero .subtitle {
-            font-size: 1.3rem;
-            color: rgba(255, 255, 255, 0.95);
+            font-size: 2.2rem;
             margin-bottom: 2rem;
-            font-weight: 400;
+            opacity: 0.95;
         }
 
         .hero .description {
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 3rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            max-width: 72rem;
+            margin: 0 auto 3.2rem;
+            font-size: 1.8rem;
             line-height: 1.7;
+            opacity: 0.92;
         }
 
-        .download-section {
-            margin-top: 2rem;
+        .hero .version-info {
+            margin-top: 1.6rem;
+            opacity: 0.85;
+            font-size: 1.5rem;
         }
 
-        .download-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(255, 255, 255, 0.95);
-            color: #1e3c72;
-            padding: 1.2rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .page-section {
+            padding: 8rem 0;
         }
 
-        .download-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-            background: white;
-            color: #1e3c72;
+        .page-section.alt {
+            background: var(--krds-color-light-gray-5);
         }
 
-        .download-icon {
-            width: 20px;
-            height: 20px;
-        }
-
-        .version-info {
-            margin-top: 1rem;
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        /* Video Tutorial Section */
-        .video-tutorial {
-            padding: 3rem 2rem;
-            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-        }
-
-        .video-description {
+        .section-head {
             text-align: center;
-            font-size: 1.1rem;
-            color: #4a5568;
-            margin-bottom: 5px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            font-weight: 500;
+            margin-bottom: 4rem;
         }
 
-        .video-container {
+        .section-head h2 {
+            margin: 1rem 0;
+            font-size: 3.2rem;
+        }
+
+        .section-head p {
+            color: var(--krds-light-color-text-subtle, #474c51);
+            margin: 0 auto;
+            max-width: 64rem;
+            font-size: 1.7rem;
+        }
+
+        .is-static .c-text .c-tit::after {
+            display: none !important;
+        }
+
+        .krds-structured-list.is-static .c-text .c-txt {
+            display: block;
+            overflow: visible;
+            -webkit-line-clamp: none;
+        }
+
+        .krds-structured-list .c-text {
+            text-decoration: none;
+            color: inherit;
+            pointer-events: none;
+        }
+
+        .video-frame {
             position: relative;
             width: 100%;
             max-width: 800px;
             margin: 0 auto;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+            aspect-ratio: 16 / 9;
         }
 
-        .video-container iframe {
+        .video-frame iframe {
+            position: absolute;
+            inset: 0;
             width: 100%;
-            height: 450px;
-            border-radius: 20px;
+            height: 100%;
+            border: 0;
         }
 
-        /* Features Section */
-        .features {
-            padding: 2rem 2rem;
-            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            color: #1a202c;
-            margin-bottom: 0;
-            font-weight: 700;
-        }
-
-        .features .section-title {
+        .manual-block {
+            background: var(--krds-color-light-gray-0);
+            border: 1px solid var(--krds-color-light-gray-10);
+            border-radius: var(--krds-radius-xlarge2, 16px);
+            padding: 2.4rem 2.8rem;
             margin-bottom: 2rem;
         }
 
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
+        .manual-block h3 {
+            margin: 0 0 1.6rem;
+            font-size: 2rem;
         }
 
-        .feature-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-            text-align: left;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(226, 232, 240, 0.8);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-        }
-
-        .feature-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #1e3c72, #4a90e2);
-            border-radius: 50%;
+        .shortcut-list li {
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
-            justify-content: center;
-            margin: 0 auto 2rem;
-            color: white;
-            font-size: 1.8rem;
-            box-shadow: 0 8px 20px rgba(30, 60, 114, 0.3);
+            gap: 0.4rem 0.6rem;
         }
 
-        .feature-card h3 {
-            font-size: 1.4rem;
-            color: #1a202c;
-            margin-bottom: 1.2rem;
-            font-weight: 700;
+        .note-item {
+            background: var(--krds-color-light-gray-0);
+            border-left: 4px solid var(--krds-color-light-secondary-50);
+            padding: 2rem 2.4rem;
+            margin-bottom: 1.6rem;
         }
 
-        .feature-card p {
-            color: #4a5568;
-            line-height: 1.7;
-            font-weight: 500;
-            word-break: keep-all;
-        }
-
-        /* System Requirements */
-        .requirements {
-            padding: 5rem 2rem;
-            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-        }
-
-        .req-list {
-            list-style: none;
-            max-width: 600px;
-            margin: 2rem auto 0;
-        }
-
-        .req-list li {
-            padding: 1rem 0;
-            border-bottom: 1px solid #e2e8f0;
+        .note-item h4 {
             display: flex;
             align-items: center;
             gap: 0.8rem;
+            margin: 0 0 0.8rem;
+            font-size: 1.8rem;
         }
 
-        .req-list li:last-child {
-            border-bottom: none;
+        .note-item p {
+            margin: 0.4rem 0 0;
+            color: var(--krds-light-color-text-subtle, #474c51);
         }
 
-        .check-icon {
-            color: #38a169;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        /* Manual Section */
-        .manual {
-            padding: 5rem 2rem;
-            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-        }
-
-        .manual-section {
-            background: white;
-            margin-bottom: 2.5rem;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(226, 232, 240, 0.8);
-        }
-
-        .manual-subtitle {
-            font-size: 1.6rem;
-            color: #1e3c72;
-            margin-bottom: 2rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .manual-content {
-            color: #4a5568;
-            line-height: 1.7;
-        }
-
-        .manual-item {
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: #f8fafc;
-            border-radius: 15px;
-            border-left: 4px solid #1e3c72;
-        }
-
-        .manual-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .manual-item h4 {
-            color: #1a202c;
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .manual-item ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .manual-item li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #e2e8f0;
-            display: flex;
-            align-items: flex-start;
-            gap: 0.5rem;
-        }
-
-        .manual-item li:last-child {
-            border-bottom: none;
-        }
-
-        .manual-item li::before {
-            content: "•";
-            color: #1e3c72;
-            font-weight: bold;
-            font-size: 1.2rem;
-            line-height: 1;
-        }
-
-        .llm-provider {
-            background: #f8fafc;
-            padding: 1.5rem;
-            border-radius: 15px;
-            margin-bottom: 1.5rem;
-            border-left: 4px solid #4a90e2;
-        }
-
-        .llm-provider:last-child {
-            margin-bottom: 0;
-        }
-
-        .llm-provider h4 {
-            color: #1a202c;
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .llm-provider ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .llm-provider li {
-            padding: 0.3rem 0;
-            color: #4a5568;
-            font-weight: 500;
-        }
-
-        .warning-item {
-            background: #fef5e7;
-            padding: 1.5rem;
-            border-radius: 15px;
-            margin-bottom: 1.5rem;
-            border-left: 4px solid #f59e0b;
-        }
-
-        .warning-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .warning-item h4 {
-            color: #92400e;
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-        }
-
-        .warning-item p {
-            color: #92400e;
-            margin: 0;
-        }
-
-        /* New Feature Section */
-        .new-feature {
-            padding: 4rem 2rem;
-            background: linear-gradient(180deg, #f8fafc 0%, #f0ebff 50%, #e8e0ff 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .new-feature::before {
-            content: '';
-            position: absolute;
-            top: -60px;
-            right: -60px;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(123, 104, 238, 0.12) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-
-        .new-feature-header {
+        .site-footer {
+            background: var(--krds-color-light-gray-95);
+            color: var(--krds-color-light-gray-0);
             text-align: center;
-            margin-bottom: 1rem;
+            padding: 2.4rem;
+            font-size: 1.5rem;
         }
 
-        .new-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, #7b68ee, #9370db);
-            color: white;
-            padding: 0.35rem 1.2rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-bottom: 0.8rem;
-            box-shadow: 0 4px 14px rgba(123, 104, 238, 0.35);
-            animation: badgePulse 3s ease-in-out infinite;
-        }
-
-        @keyframes badgePulse {
-
-            0%,
-            100% {
-                box-shadow: 0 4px 14px rgba(123, 104, 238, 0.35);
-            }
-
-            50% {
-                box-shadow: 0 4px 22px rgba(123, 104, 238, 0.55);
-            }
-        }
-
-        .new-feature .section-title {
-            margin-bottom: 0.5rem;
-        }
-
-        .new-feature-subtitle {
-            text-align: center;
-            color: #6b7280;
-            font-size: 1.05rem;
-            font-weight: 500;
-            margin-bottom: 2.5rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .new-feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .nf-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            padding: 1.8rem;
-            border-radius: 16px;
-            border: 1px solid rgba(123, 104, 238, 0.15);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        .nf-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 32px rgba(123, 104, 238, 0.15);
-            border-color: rgba(123, 104, 238, 0.3);
-        }
-
-        .nf-card-icon {
-            font-size: 1.6rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .nf-card h3 {
-            font-size: 1.15rem;
-            color: #1a202c;
-            font-weight: 700;
-            margin-bottom: 0.6rem;
-        }
-
-        .nf-card p {
-            color: #4a5568;
-            font-size: 0.95rem;
-            line-height: 1.65;
-            font-weight: 500;
-        }
-
-        .nf-card .nf-shortcut {
-            display: inline-block;
-            margin-top: 0.6rem;
-            background: rgba(123, 104, 238, 0.1);
-            color: #5b4dc7;
-            padding: 0.2rem 0.6rem;
-            border-radius: 6px;
-            font-size: 0.82rem;
-            font-weight: 600;
-        }
-
-        /* Footer */
-        .footer {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            text-align: center;
-            padding: 1rem 2rem;
-        }
-
-        /* Responsive Design */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-                flex-direction: column;
-                padding: 1rem;
-                gap: 1rem;
-            }
-
-            .nav-links.active {
-                display: flex;
+            .hero h1 {
+                font-size: 3.2rem;
             }
 
             .nav-toggle {
                 display: block;
             }
 
-            .hero h1 {
-                font-size: 2.5rem;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
+            .site-nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                z-index: 20;
+                background: var(--krds-color-light-gray-0);
+                border-bottom: 1px solid var(--krds-color-light-gray-10);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1.2rem 2rem 1.6rem;
             }
 
-            .hero .subtitle {
-                font-size: 1.1rem;
+            .site-nav.is-open {
+                display: flex;
             }
 
-            .features-grid {
-                grid-template-columns: 1fr;
+            .site-header {
+                position: sticky;
             }
 
-            .download-btn {
-                padding: 1rem 2rem;
-                font-size: 1rem;
-            }
-
-            .video-container iframe {
-                height: 250px;
-            }
-
-            .video-tutorial {
-                padding: 3rem 1rem;
-            }
-
-            .manual {
-                padding: 3rem 1rem;
-            }
-
-            .manual-section {
-                padding: 2rem 1.5rem;
-            }
-
-            .manual-item {
-                padding: 1rem;
-            }
-        }
-
-        /* Extra small screens */
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2rem;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
+            .site-header .inner {
+                position: relative;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="nav-brand">연합뉴스 지원 도구</a>
-            <button class="nav-toggle" onclick="toggleNav()">☰</button>
-            <ul class="nav-links">
-                <li><a href="https://chromewebstore.google.com/detail/yonhapcms-enhancement-plu/lafhcninhgpmpdckfkfmgobdmcgfohoh?authuser=0&hl=ko"
-                        target="_blank">통합검색 플러그인</a></li>
-                <li><a href="https://chromewebstore.google.com/detail/assembly-webcast-subtitle/iiadnfahoocbannfpgfgbommblpagacl?authuser=0&hl=ko"
-                        target="_blank">국회의사중계시스템 자막 저장기</a></li>
-                <li><a href="http://dongnemart.github.io/YNASupporter/Photoresizer_Setup.exe">포토 리사이저</a></li>
-            </ul>
+    <div id="wrap">
+        <div id="krds-skip-link">
+            <a href="#content">본문 바로가기</a>
         </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>연합뉴스 작성기 도우미</h1>
-            <p class="subtitle">기사 쓸 때 귀찮은 부분을 해소합니다</p>
-            <p class="description">
-                YNA 클라이언트 보조 도구입니다. <br> AI와 질의응답, AI를 통한 키워드 추천과 제목 요약, 작성기 내에서 연합·구글 검색, 수치 증감률 계산 등 <br> 기사 작성 시 필요한
-                기능을 제공합니다.
-            </p>
-
-            <div class="download-section">
-                <a href="YNASupport_Setup.exe" class="download-btn" download>
-                    <svg class="download-icon" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd"
-                            d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                    다운로드
-                </a>
-                <div class="version-info">
-                    버전 4.0.1.5
-                </div>
+        <header class="site-header">
+            <div class="inner">
+                <a href="#content" class="site-brand">연합뉴스 지원 도구</a>
+                <button type="button" class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="메뉴 열기">☰</button>
+                <ul id="site-nav" class="site-nav">
+                    <li>
+                        <a class="krds-btn small text" href="https://chromewebstore.google.com/detail/yonhapcms-enhancement-plu/lafhcninhgpmpdckfkfmgobdmcgfohoh?authuser=0&hl=ko" target="_blank" title="새 창 열기">통합검색 플러그인</a>
+                    </li>
+                    <li>
+                        <a class="krds-btn small text" href="https://chromewebstore.google.com/detail/assembly-webcast-subtitle/iiadnfahoocbannfpgfgbommblpagacl?authuser=0&hl=ko" target="_blank" title="새 창 열기">국회의사중계시스템 자막 저장기</a>
+                    </li>
+                    <li>
+                        <a class="krds-btn small text" href="http://dongnemart.github.io/YNASupporter/Photoresizer_Setup.exe">포토 리사이저</a>
+                    </li>
+                </ul>
             </div>
-        </div>
-    </section>
+        </header>
 
-    <!-- Video Tutorial Section -->
-    <section class="video-tutorial">
-        <div class="container">
-            <h2 class="section-title">활용법</h2>
-            <p class="video-description">연합뉴스 작성기 도우미 사용 모습입니다</p>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/8H-KSJ1dORM?si=aMJmljmp5Mu2_dW1" title="연합뉴스 작성기 도우미 사용법"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen>
-                </iframe>
-            </div>
-        </div>
-    </section>
+        <main id="content">
+            <section class="hero" aria-labelledby="hero-title">
+                <h1 id="hero-title">연합뉴스 작성기 도우미</h1>
+                <p class="subtitle">기사 쓸 때 귀찮은 부분을 해소합니다</p>
+                <p class="description">
+                    YNA 클라이언트 보조 도구입니다.
+                    5.0에서는 작성기 옆에서 바로 쓰는 <strong>AI 웹 패널</strong>, 클릭 한 번으로 <strong>엠바고</strong> 설정, 커서 옆에서 <strong>이미지 검색</strong> 기능이 추가됐습니다.
+                    무엇보다 <strong>속도와 안정성</strong>을 크게 손봤습니다.
+                </p>
+                <a class="krds-btn xlarge primary" href="YNASupport_Setup.exe" download>다운로드</a>
+                <p class="version-info">버전 5.0.0.0</p>
+            </section>
 
-    <!-- New Feature: QuickBoard 메모보드 -->
-    <section class="new-feature" id="quickboard">
-        <div class="container">
-            <div class="new-feature-header">
-                <span class="new-badge">✨ New</span>
-                <h2 class="section-title">메모보드</h2>
-            </div>
-            <p class="new-feature-subtitle">
-                하나의 창에 텍스트와 이미지를 모아 두고, AI 분석까지 받을 수 있는 메모판입니다
-            </p>
-            <div class="new-feature-grid">
-                <div class="nf-card">
-                    <div class="nf-card-icon">📋</div>
-                    <h3>메모판 다중 실행</h3>
-                    <p>여러 메모판을 동시에 띄울 수 있으며, 트레이 메뉴에서 새 메모판을 추가로 열 수 있습니다</p>
-                    <span class="nf-shortcut">Ctrl+Alt+A</span>
+            <section class="page-section" id="new-in-50" aria-labelledby="new-title">
+                <div class="inner">
+                    <div class="section-head">
+                        <span class="krds-badge bg-secondary">New in 5.0</span>
+                        <h2 id="new-title">5.0 새 기능</h2>
+                        <p>작성기를 떠나지 않고, 손이 덜 가게</p>
+                    </div>
+                    <ul class="krds-structured-list is-static">
+                        <li class="structured-item">
+                            <div class="in">
+                                <div class="card-top"><span class="krds-badge bg-light-primary">AI</span></div>
+                                <div class="card-body">
+                                    <div class="c-text">
+                                        <p class="c-tit"><span class="span">AI 웹 패널</span></p>
+                                        <p class="c-txt">작성기 왼쪽 ‘화면목록’ 자리에 웹 패널이 뜹니다. ChatGPT·Gemini·Grok·Claude와 연합 AI랩·에이전트 채팅, 네이버 뉴스를 작성기 옆에서 바로 쓸 수 있습니다.</p>
+                                        <p class="c-date"><strong class="key">단축키</strong><span class="value">Ctrl+Alt+W (열기/최소화)</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="structured-item">
+                            <div class="in">
+                                <div class="card-top"><span class="krds-badge bg-light-secondary">입력</span></div>
+                                <div class="card-body">
+                                    <div class="c-text">
+                                        <p class="c-tit"><span class="span">엠바고 버튼</span></p>
+                                        <p class="c-txt">작성기 도구모음 오른쪽에 [엠바고1][엠바고2][엠바고3][엠바고 설정] 버튼이 붙습니다. 자주 쓰는 엠바고(오늘/내일 + 시각)를 저장해 두면 클릭 한 번으로 엠바고가 입력됩니다.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="structured-item">
+                            <div class="in">
+                                <div class="card-top"><span class="krds-badge bg-light-point">검색</span></div>
+                                <div class="card-body">
+                                    <div class="c-text">
+                                        <p class="c-tit"><span class="span">커서 옆 이미지 검색</span></p>
+                                        <p class="c-txt">본문에서 ##을 입력하면 이미지 검색 창이 커서 옆에 팝업으로 뜹니다. 검색 언어는 자동으로 국문, 사진을 더블클릭하면 본문에 들어가고 창은 원래 자리로 돌아갑니다. 공통정보·영상 탭에 있어도 알아서 이미지 탭으로 바뀝니다.</p>
+                                        <p class="c-date"><strong class="key">단축키</strong><span class="value">## · 닫기 Esc</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="structured-item">
+                            <div class="in">
+                                <div class="card-top"><span class="krds-badge bg-light-success">선택</span></div>
+                                <div class="card-body">
+                                    <div class="c-text">
+                                        <p class="c-tit"><span class="span">문단 선택</span></p>
+                                        <p class="c-txt">커서가 있는 문단 전체를 한 번에 선택합니다. AI 질의응답과 번역도 이제 이 방식으로 문단을 정확히 잡습니다.</p>
+                                        <p class="c-date"><strong class="key">단축키</strong><span class="value">Ctrl+Alt+J</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-                <div class="nf-card">
-                    <div class="nf-card-icon">✏️</div>
-                    <h3>텍스트 메모 추가·수정</h3>
-                    <p>메모 추가 버튼으로 직접 입력하고, 더블클릭으로 수정할 수 있습니다. 복사·삭제도 가능합니다</p>
-                </div>
-                <div class="nf-card">
-                    <div class="nf-card-icon">📎</div>
-                    <h3>클립보드 메모 수집</h3>
-                    <p>텍스트 클립보드 감지를 켜면 복사한 텍스트가 자동으로 메모에 추가됩니다. Ctrl+V로 즉시 가져올 수도 있습니다</p>
-                </div>
-                <div class="nf-card">
-                    <div class="nf-card-icon">⏱️</div>
-                    <h3>시간에 따라 메모 자동 관리</h3>
-                    <p>기본 6시간 보존, 1~24시간 범위로 보존 시간 설정이 가능합니다. &lsquo;메모보드 유지&rsquo;를 켜면 만료 없이 계속 유지됩니다</p>
-                </div>
-                <div class="nf-card">
-                    <div class="nf-card-icon">💾</div>
-                    <h3>저장 &amp; 불러오기</h3>
-                    <p>메모판 상태를 JSON으로 저장하고 복원할 수 있습니다. 창 크기·위치·색상·AI 분석 결과까지 함께 저장됩니다</p>
-                </div>
-                <div class="nf-card">
-                    <div class="nf-card-icon">🎨</div>
-                    <h3>색상 &amp; 레이아웃</h3>
-                    <p>보드 전체·개별 메모 카드 색상을 바꿀 수 있습니다. 창 너비에 따라 메모 카드가 자동 재배치됩니다</p>
-                </div>
-                <div class="nf-card">
-                    <div class="nf-card-icon">🔔</div>
-                    <h3>트레이 연동</h3>
-                    <p>창을 닫으면 트레이로 숨기고, 복원 단축키(기본 Ctrl+Alt+1~5)로 빠르게 다시 불러올 수 있습니다</p>
-                </div>
-                <div class="nf-card">
-                    <div class="nf-card-icon">🤖</div>
-                    <h3>AI 분석</h3>
-                    <p>모인 메모 내용을 바탕으로 AI 분석을 요청하면, 결과가 보드 맨 위에 카드로 표시됩니다. 프롬프트도 수정 가능합니다</p>
-                </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Features Section -->
-    <section class="features">
-        <div class="container">
-            <h2 class="section-title">주요 기능</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🤖</div>
-                    <h3>AI 통합</h3>
-                    <p>단축키(Ctrl+Alt+Q)로 AI에게 질문해 답변을 받거나 키워드를 추천(Ctrl+Alt+K)받을 수 있습니다. DeepL을 이용한 번역 기능(Ctrl+Alt+H)도
-                        있습니다</p>
+            <section class="page-section alt" id="stability" aria-labelledby="stability-title">
+                <div class="inner">
+                    <div class="section-head">
+                        <h2 id="stability-title">더 가볍고 안정적으로</h2>
+                        <p>5.0에서 멈춤·재시작·메모리 문제를 우선 손봤습니다.</p>
+                    </div>
+                    <ul class="krds-info-list decimal">
+                        <li>작성기를 오래 최소화했다가 다시 켜도 단축키와 입력이 바로 됩니다.</li>
+                        <li>트레이에서 ‘프로그램 재시작’을 누르면 어떤 상황에서도 다시 시작됩니다.</li>
+                        <li>AI·번역 요청 중에도 트레이 메뉴가 반응합니다.</li>
+                        <li>대치어는 연합뉴스 작성기 안에서만 동작합니다.</li>
+                        <li>연합뉴스(==)·구글(//) 검색을 하나의 가벼운 모듈로 합쳤습니다.</li>
+                    </ul>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🧮</div>
-                    <h3>AI 퍼센트 계산기</h3>
-                    <p>비율값·비율·증감률·증감값 등 4가지 퍼센트 계산을 지원합니다. 텍스트를 선택하면 AI가 기준값과 비교값을 자동으로 추출해 즉시 계산합니다</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⌨️</div>
-                    <h3>텍스트 자동 대치</h3>
-                    <p>자주 쓰는 단어를 여러번 입력하지 않도록 입력어를 타이핑하는 즉시 정해진 단어로 변환합니다. 대치어 설정 창에서 대상 단어를 추가·수정할 수 있습니다.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📈</div>
-                    <h3>주가 검색</h3>
-                    <p>트레이 메뉴나 단축키(Ctrl+Alt+M)로 작은 창을 띄워 실시간 주가를 조회하고 복사할 수 있습니다</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>이미지 리사이즈</h3>
-                    <p>사용자가 정한 용량에 맞춰 이미지 크기를 조정합니다</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🖼️</div>
-                    <h3>사진 콜라주 제작</h3>
-                    <p>여러 장의 사진을 하나로 합쳐줍니다. 다양한 레이아웃에 맞춰 2~6장의 이미지를 합칠 수 있습니다.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔢</div>
-                    <h3>연합뉴스 숫자 표기 적용</h3>
-                    <p>아라비아 숫자를 연합뉴스 표기에 맞게 변환(Ctrl+Shift+R)합니다. 실시간 환율을 적용해 외화에 원화 표기를 추가(Ctrl+Alt+R)할 수도 있습니다</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔍</div>
-                    <h3>빠른 검색</h3>
-                    <p>단축키로 작성기를 떠나지 않고 연합뉴스(==)·구글(//) 검색이 가능합니다</p>
-                </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Manual Section -->
-    <section class="manual">
-        <div class="container">
-            <h2 class="section-title">상세 사용법</h2>
+            <section class="page-section" id="tutorial" aria-labelledby="tutorial-title">
+                <div class="inner">
+                    <div class="section-head">
+                        <h2 id="tutorial-title">활용법</h2>
+                        <p>연합뉴스 작성기 도우미 사용 모습입니다</p>
+                    </div>
+                    <div class="video-frame">
+                        <iframe src="https://www.youtube.com/embed/8H-KSJ1dORM?si=aMJmljmp5Mu2_dW1" title="연합뉴스 작성기 도우미 사용법" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </section>
 
-            <!-- 기능 섹션 -->
-            <div class="manual-section">
-                <div class="manual-content">
-                    <div class="manual-item">
-                        <h4>기본 기능</h4>
-                        <ul>
+            <section class="page-section alt" id="features" aria-labelledby="features-title">
+                <div class="inner">
+                    <div class="section-head">
+                        <h2 id="features-title">주요 기능</h2>
+                    </div>
+                    <ul class="krds-structured-list is-static">
+                        <li class="structured-item">
+                            <div class="in">
+                                <div class="card-body">
+                                    <div class="c-text">
+                                        <p class="c-tit"><span class="span">AI 통합</span></p>
+                                        <p class="c-txt">단축키(Ctrl+Alt+Q)로 AI에게 질문해 답변을 받거나 키워드를 추천(Ctrl+Alt+K)받을 수 있습니다. DeepL을 이용한 번역 기능(Ctrl+Alt+H)도 있습니다. 제공사: Google·OpenAI·OpenRouter·Hugging Face·NVIDIA</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="structured-item">
+                            <div class="in">
+                                <div class="card-body">
+                                    <div class="c-text">
+                                        <p class="c-tit"><span class="span">AI 퍼센트 계산기</span></p>
+                                        <p class="c-txt">비율값·비율·증감률·증감값 등 4가지 퍼센트 계산을 지원합니다. 텍스트를 선택하면 AI가 기준값과 비교값을 자동으로 추출해 즉시 계산합니다</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="structured-item">
+                            <div class="in">
+                                <div class="card-body">
+                                    <div class="c-text">
+                                        <p class="c-tit"><span class="span">텍스트 자동 대치</span></p>
+                                        <p class="c-txt">자주 쓰는 단어를 여러 번 입력하지 않도록 입력어를 타이핑하는 즉시 정해진 단어로 변환합니다. 대치어 설정 창에서 대상 단어를 추가·수정할 수 있습니다. 연합뉴스 작성기 안에서만 동작합니다</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="structured-item">
+                            <div class="in">
+                                <div class="card-body">
+                                    <div class="c-text">
+                                        <p class="c-tit"><span class="span">주가 검색</span></p>
+                                        <p class="c-txt">트레이 메뉴나 단축키(Ctrl+Alt+M)로 작은 창을 띄워 실시간 주가를 조회하고 복사할 수 있습니다</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="structured-item">
+                            <div class="in">
+                                <div class="card-body">
+                                    <div class="c-text">
+                                        <p class="c-tit"><span class="span">이미지 리사이즈</span></p>
+                                        <p class="c-txt">사용자가 정한 용량에 맞춰 이미지 크기를 조정합니다</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="structured-item">
+                            <div class="in">
+                                <div class="card-body">
+                                    <div class="c-text">
+                                        <p class="c-tit"><span class="span">사진 콜라주 제작</span></p>
+                                        <p class="c-txt">여러 장의 사진을 하나로 합쳐 줍니다. 다양한 레이아웃에 맞춰 2~6장의 이미지를 합칠 수 있습니다.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="structured-item">
+                            <div class="in">
+                                <div class="card-body">
+                                    <div class="c-text">
+                                        <p class="c-tit"><span class="span">연합뉴스 숫자 표기 적용</span></p>
+                                        <p class="c-txt">아라비아 숫자를 연합뉴스 표기에 맞게 변환(Ctrl+Shift+R)합니다. 실시간 환율을 적용해 외화에 원화 표기를 추가(Ctrl+Alt+R)할 수도 있습니다</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="structured-item">
+                            <div class="in">
+                                <div class="card-body">
+                                    <div class="c-text">
+                                        <p class="c-tit"><span class="span">빠른 검색</span></p>
+                                        <p class="c-txt">작성기를 떠나지 않고 연합뉴스(==)·구글(//) 검색 결과를 웹 패널에서 바로 봅니다</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="structured-item">
+                            <div class="in">
+                                <div class="card-body">
+                                    <div class="c-text">
+                                        <p class="c-tit"><span class="span">메모보드</span></p>
+                                        <p class="c-txt">텍스트와 이미지를 한 창에 모아 두고 AI 분석까지 받을 수 있는 메모판입니다</p>
+                                        <p class="c-date"><strong class="key">단축키</strong><span class="value">Ctrl+Alt+A</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="page-section" id="manual" aria-labelledby="manual-title">
+                <div class="inner">
+                    <div class="section-head">
+                        <h2 id="manual-title">상세 사용법</h2>
+                        <p>모든 단축키는 트레이 → 설정에서 바꿀 수 있습니다.</p>
+                    </div>
+
+                    <div class="manual-block">
+                        <h3>기본 기능</h3>
+                        <ul class="krds-info-list dash shortcut-list">
                             <li><strong>송고 버튼 클릭:</strong> Ctrl+Alt+P</li>
                             <li><strong>제목 길이 변경 활성화:</strong> Ctrl+Alt+T</li>
-                            <li><strong>제목 길이 변경 항상 켜기:</strong> 설정에서 '제목 길이 변경 항상 켜기' 체크</li>
+                            <li><strong>제목 길이 변경 항상 켜기:</strong> 설정에서 체크</li>
                             <li><strong>통합검색 열기:</strong> Ctrl+Alt+F</li>
-                            <li><strong>입력창 순차 선택:</strong> Ctrl+Alt+E (내용→속성→키워드)</li>
+                            <li><strong>입력창 순차 선택:</strong> Ctrl+Alt+E (내용 → 속성 → 키워드)</li>
+                            <li><span class="krds-badge bg-secondary">NEW</span> <strong>문단 선택:</strong> Ctrl+Alt+J</li>
+                            <li><span class="krds-badge bg-secondary">NEW</span> <strong>엠바고 입력:</strong> 도구모음 오른쪽 [엠바고1~3] 버튼 · 값은 [엠바고 설정]에서</li>
                         </ul>
                     </div>
 
-                    <div class="manual-item">
-                        <h4>검색 및 입력 도우미</h4>
-                        <ul>
-                            <li><strong>국어 사전 검색:</strong> Ctrl+Alt+D (블록 설정한 단어)</li>
+                    <div class="manual-block">
+                        <h3>검색 및 입력 도우미</h3>
+                        <ul class="krds-info-list dash shortcut-list">
+                            <li><strong>국어사전 검색:</strong> Ctrl+Alt+D (블록 설정한 단어)</li>
                             <li><strong>추천분류/키워드 자동 입력:</strong> Ctrl+Shift+K</li>
-                            <li><strong>바이라인 자동 입력:</strong> Ctrl+Alt+V</li>
-                            <li><strong>제목 글자 수 셈하기:</strong> Ctrl+Alt+C</li>
-                            <li><strong>제목 글자 수 줄이기:</strong> Ctrl+Alt+S (LLM API Key 필요)</li>
+                            <li><strong>바이라인 자동 입력:</strong> Ctrl+Alt+B</li>
+                            <li><strong>제목 글자 수 세기:</strong> Ctrl+Alt+C</li>
+                            <li><strong>제목 글자 수 줄이기:</strong> Ctrl+Alt+S (LLM API 키 필요)</li>
                             <li><strong>메모보드:</strong> Ctrl+Alt+A</li>
+                            <li><span class="krds-badge bg-secondary">NEW</span> <strong>이미지 검색 팝업:</strong> 본문에 ## 입력 → 사진 더블클릭으로 삽입 · Esc로 닫기</li>
                         </ul>
                     </div>
 
-                    <div class="manual-item">
-                        <h4>AI 및 번역</h4>
-                        <ul>
-                            <li><strong>키워드 추출:</strong> Ctrl+Alt+K (LLM API Key 필요)</li>
-                            <li><strong>퍼센트 계산기:</strong> Ctrl+Alt+N — 텍스트 선택 시 AI가 기준값·비교값을 자동 추출하여 계산 (LLM API Key 필요)
-                            </li>
-                            <li><strong>DeepL 번역:</strong> Ctrl+Alt+H (DeepL API Key 필요)</li>
+                    <div class="manual-block">
+                        <h3>AI 및 번역</h3>
+                        <ul class="krds-info-list dash shortcut-list">
+                            <li><strong>AI 질의응답:</strong> Ctrl+Alt+Q (선택 없으면 현재 문단)</li>
+                            <li><strong>키워드 추출:</strong> Ctrl+Alt+K (LLM API 키 필요)</li>
+                            <li><strong>퍼센트 계산기:</strong> Ctrl+Alt+N</li>
+                            <li><strong>DeepL 번역:</strong> Ctrl+Alt+H (DeepL API 키 필요, 선택 없으면 현재 문단)</li>
+                            <li><span class="krds-badge bg-secondary">NEW</span> <strong>AI 웹 패널 열기/최소화:</strong> Ctrl+Alt+W</li>
                         </ul>
                     </div>
 
-                    <div class="manual-item">
-                        <h4>숫자 및 텍스트 처리</h4>
-                        <ul>
+                    <div class="manual-block">
+                        <h3>숫자 및 텍스트 처리</h3>
+                        <ul class="krds-info-list dash shortcut-list">
                             <li><strong>연합뉴스 숫자 표기:</strong> Ctrl+Shift+R</li>
                             <li><strong>외화 원화 표기 추가:</strong> Ctrl+Alt+R</li>
-                            <li><strong>텍스트 대치:</strong> km→㎞, ~→∼ 등 즉시 반환. 트레이 메뉴에서 '대치어 설정'에서 단어 관리</li>
-                            <li><strong>괄호/따옴표 자동 닫기:</strong> (, [, {, <, ", ' 입력 시 해당 기호 자동 닫힘. 설정에서 괄호/따옴표 자동 닫기 켜기</li>
+                            <li><strong>텍스트 대치:</strong> 트레이 → 대치어 설정</li>
+                            <li><strong>괄호/따옴표 자동 닫기:</strong> 설정에서 켜기</li>
                         </ul>
                     </div>
 
-                    <div class=" manual-item">
-                                    <h4>작성기 내 검색</h4>
-                                    <ul>
-                                        <li><strong>연합뉴스 검색:</strong> == 입력</li>
-                                        <li><strong>구글 검색:</strong> // 입력</li>
-                                        <li><strong>주가 검색:</strong> Ctrl+Alt+M</li>
-                                    </ul>
+                    <div class="manual-block">
+                        <h3>작성기 내 검색</h3>
+                        <ul class="krds-info-list dash shortcut-list">
+                            <li><strong>연합뉴스 검색:</strong> == 입력 → 결과는 웹 패널에</li>
+                            <li><strong>구글 검색:</strong> // 입력 → 결과는 웹 패널에</li>
+                            <li><strong>주가 검색:</strong> Ctrl+Alt+M</li>
+                        </ul>
+                    </div>
+
+                    <div class="manual-block" id="settings">
+                        <h3>설정</h3>
+                        <p>트레이 아이콘(화면 오른쪽 아래 시계 옆 ^ → 푸른 바탕에 흰 Y)을 오른쪽 클릭하면 메뉴가 나옵니다.</p>
+                    </div>
+
+                    <div class="manual-block" id="notes">
+                        <h3>알아두기</h3>
+                        <article class="note-item">
+                            <h4><span class="krds-badge bg-information">안내</span> 작동 범위</h4>
+                            <p>연합뉴스 작성기(YNAClientEx)에 맞춰 만들었습니다. 대치어·괄호 자동 닫기 등 입력 기능은 작성기 안에서만 동작합니다.</p>
+                        </article>
+                        <article class="note-item">
+                            <h4><span class="krds-badge bg-information">안내</span> AI 웹 패널 로그인</h4>
+                            <p>각 사이트 로그인은 처음 한 번만 하면 유지됩니다. 일부 사이트에서 로그인이 제한될 수 있습니다.</p>
+                            <p>웹 패널은 메모리를 더 쓰므로, 필요 없으면 설정에서 ‘프로그램 시작 시 웹 패널 표시’를 꺼 두세요.</p>
+                        </article>
+                        <article class="note-item">
+                            <h4><span class="krds-badge bg-warning">주의</span> 이미지 검색 팝업</h4>
+                            <p>작성기를 켠 뒤 처음 이미지 탭을 열 때 이미지 목록을 불러오느라 2~3초 걸릴 수 있습니다.</p>
+                        </article>
+                        <article class="note-item">
+                            <h4><span class="krds-badge bg-information">안내</span> API 키</h4>
+                            <p>AI 기능은 각 제공사 API 키가 필요합니다. 키는 이 PC의 설정 파일에만 저장됩니다.</p>
+                        </article>
+                        <article class="note-item">
+                            <h4><span class="krds-badge bg-information">안내</span> 문제가 생기면</h4>
+                            <p>트레이 → ‘프로그램 재시작’을 눌러 주세요. 트레이가 반응하지 않으면 프로그램을 다시 실행하면 됩니다.</p>
+                        </article>
                     </div>
                 </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="inner">
+                <p>&copy; 2026 DN. 모든 권리 보유.</p>
             </div>
-
-
-            <!-- 설정 섹션 -->
-            <div class="manual-section">
-                <h3 class="manual-subtitle">⚙️ 설정</h3>
-                <div class="manual-content">
-                    <p>트레이 아이콘(화면 오른쪽 하단 시계 옆 ^ 표시를 클릭하면 나옵니다. 푸른색 배경에 흰색 Y)을 마우스 오른쪽으로 클릭하면 설정 메뉴가 나타납니다.</p>
-                </div>
-            </div>
-
-            <!-- 주의사항 섹션 -->
-            <div class="manual-section">
-                <h3 class="manual-subtitle">⚠️ 프로그램 호환성</h3>
-                <div class="manual-content">
-                    <div class="warning-item">
-                        <p>기본적으로 YnaClinetEx에 한정해 작동되도록 짜였으나, 이외 프로그램에서도 작동되기도 합니다. </p>
-                    </div>
-                </div>
-            </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 DN. 모든 권리 보유.</p>
-        </div>
-    </footer>
+        </footer>
+    </div>
 
     <script>
-        function toggleNav() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.toggle('active');
-        }
+        (function () {
+            var toggle = document.querySelector(".nav-toggle");
+            var nav = document.getElementById("site-nav");
+            if (!toggle || !nav) return;
+            toggle.addEventListener("click", function () {
+                var open = nav.classList.toggle("is-open");
+                toggle.setAttribute("aria-expanded", open ? "true" : "false");
+                toggle.setAttribute("aria-label", open ? "메뉴 닫기" : "메뉴 열기");
+            });
+        })();
     </script>
 </body>
-
-
 
 </html>
